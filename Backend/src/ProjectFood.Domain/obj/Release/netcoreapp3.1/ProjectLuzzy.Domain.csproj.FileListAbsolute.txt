@@ -1,0 +1,9 @@
+C:\_Personal\Luzzy\LuzzyTuor_Backend\src\ProjectLuzzy.Domain\bin\Release\netcoreapp3.1\ProjectLuzzy.Domain.deps.json
+C:\_Personal\Luzzy\LuzzyTuor_Backend\src\ProjectLuzzy.Domain\bin\Release\netcoreapp3.1\ProjectLuzzy.Domain.dll
+C:\_Personal\Luzzy\LuzzyTuor_Backend\src\ProjectLuzzy.Domain\bin\Release\netcoreapp3.1\ProjectLuzzy.Domain.pdb
+C:\_Personal\Luzzy\LuzzyTuor_Backend\src\ProjectLuzzy.Domain\obj\Release\netcoreapp3.1\ProjectLuzzy.Domain.AssemblyInfoInputs.cache
+C:\_Personal\Luzzy\LuzzyTuor_Backend\src\ProjectLuzzy.Domain\obj\Release\netcoreapp3.1\ProjectLuzzy.Domain.AssemblyInfo.cs
+C:\_Personal\Luzzy\LuzzyTuor_Backend\src\ProjectLuzzy.Domain\obj\Release\netcoreapp3.1\ProjectLuzzy.Domain.csproj.CoreCompileInputs.cache
+C:\_Personal\Luzzy\LuzzyTuor_Backend\src\ProjectLuzzy.Domain\obj\Release\netcoreapp3.1\ProjectLuzzy.Domain.dll
+C:\_Personal\Luzzy\LuzzyTuor_Backend\src\ProjectLuzzy.Domain\obj\Release\netcoreapp3.1\ProjectLuzzy.Domain.pdb
+C:\_Personal\Luzzy\LuzzyTuor_Backend\src\ProjectLuzzy.Domain\obj\Release\netcoreapp3.1\ProjectLuzzy.Domain.csprojAssemblyReference.cache

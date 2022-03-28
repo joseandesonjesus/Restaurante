@@ -1,0 +1,12 @@
+C:\_Personal\Restaurante\Backend\src\ProjectFood.Domain\bin\Debug\net5.0\ProjectFood.Domain.deps.json
+C:\_Personal\Restaurante\Backend\src\ProjectFood.Domain\bin\Debug\net5.0\ProjectFood.Domain.dll
+C:\_Personal\Restaurante\Backend\src\ProjectFood.Domain\bin\Debug\net5.0\ref\ProjectFood.Domain.dll
+C:\_Personal\Restaurante\Backend\src\ProjectFood.Domain\bin\Debug\net5.0\ProjectFood.Domain.pdb
+C:\_Personal\Restaurante\Backend\src\ProjectFood.Domain\obj\Debug\net5.0\ProjectFood.Domain.csproj.AssemblyReference.cache
+C:\_Personal\Restaurante\Backend\src\ProjectFood.Domain\obj\Debug\net5.0\ProjectFood.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\_Personal\Restaurante\Backend\src\ProjectFood.Domain\obj\Debug\net5.0\ProjectFood.Domain.AssemblyInfoInputs.cache
+C:\_Personal\Restaurante\Backend\src\ProjectFood.Domain\obj\Debug\net5.0\ProjectFood.Domain.AssemblyInfo.cs
+C:\_Personal\Restaurante\Backend\src\ProjectFood.Domain\obj\Debug\net5.0\ProjectFood.Domain.csproj.CoreCompileInputs.cache
+C:\_Personal\Restaurante\Backend\src\ProjectFood.Domain\obj\Debug\net5.0\ProjectFood.Domain.dll
+C:\_Personal\Restaurante\Backend\src\ProjectFood.Domain\obj\Debug\net5.0\ref\ProjectFood.Domain.dll
+C:\_Personal\Restaurante\Backend\src\ProjectFood.Domain\obj\Debug\net5.0\ProjectFood.Domain.pdb

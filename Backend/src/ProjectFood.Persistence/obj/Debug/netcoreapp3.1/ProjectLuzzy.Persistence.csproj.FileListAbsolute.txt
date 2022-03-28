@@ -1,0 +1,15 @@
+C:\_Personal\Luzzy\LuzzyTuor_Backend\src\ProjectLuzzy.Persistence\bin\Debug\netcoreapp3.1\ProjectLuzzy.Persistence.deps.json
+C:\_Personal\Luzzy\LuzzyTuor_Backend\src\ProjectLuzzy.Persistence\bin\Debug\netcoreapp3.1\ProjectLuzzy.Persistence.runtimeconfig.json
+C:\_Personal\Luzzy\LuzzyTuor_Backend\src\ProjectLuzzy.Persistence\bin\Debug\netcoreapp3.1\ProjectLuzzy.Persistence.runtimeconfig.dev.json
+C:\_Personal\Luzzy\LuzzyTuor_Backend\src\ProjectLuzzy.Persistence\bin\Debug\netcoreapp3.1\ProjectLuzzy.Persistence.dll
+C:\_Personal\Luzzy\LuzzyTuor_Backend\src\ProjectLuzzy.Persistence\bin\Debug\netcoreapp3.1\ProjectLuzzy.Persistence.pdb
+C:\_Personal\Luzzy\LuzzyTuor_Backend\src\ProjectLuzzy.Persistence\bin\Debug\netcoreapp3.1\ProjectLuzzy.Domain.dll
+C:\_Personal\Luzzy\LuzzyTuor_Backend\src\ProjectLuzzy.Persistence\bin\Debug\netcoreapp3.1\ProjectLuzzy.Domain.pdb
+C:\_Personal\Luzzy\LuzzyTuor_Backend\src\ProjectLuzzy.Persistence\obj\Debug\netcoreapp3.1\ProjectLuzzy.Persistence.AssemblyInfoInputs.cache
+C:\_Personal\Luzzy\LuzzyTuor_Backend\src\ProjectLuzzy.Persistence\obj\Debug\netcoreapp3.1\ProjectLuzzy.Persistence.AssemblyInfo.cs
+C:\_Personal\Luzzy\LuzzyTuor_Backend\src\ProjectLuzzy.Persistence\obj\Debug\netcoreapp3.1\ProjectLuzzy.Persistence.csproj.CoreCompileInputs.cache
+C:\_Personal\Luzzy\LuzzyTuor_Backend\src\ProjectLuzzy.Persistence\obj\Debug\netcoreapp3.1\ProjectLuzzy.Persistence.csproj.CopyComplete
+C:\_Personal\Luzzy\LuzzyTuor_Backend\src\ProjectLuzzy.Persistence\obj\Debug\netcoreapp3.1\ProjectLuzzy.Persistence.dll
+C:\_Personal\Luzzy\LuzzyTuor_Backend\src\ProjectLuzzy.Persistence\obj\Debug\netcoreapp3.1\ProjectLuzzy.Persistence.pdb
+C:\_Personal\Luzzy\LuzzyTuor_Backend\src\ProjectLuzzy.Persistence\obj\Debug\netcoreapp3.1\ProjectLuzzy.Persistence.genruntimeconfig.cache
+C:\_Personal\Luzzy\LuzzyTuor_Backend\src\ProjectLuzzy.Persistence\obj\Debug\netcoreapp3.1\ProjectLuzzy.Persistence.csprojAssemblyReference.cache

@@ -1,0 +1,14 @@
+C:\_Personal\Luzzy\LuzzyTuor_Backend\src\ProjectLuzzy.Application\bin\Release\netcoreapp3.1\ProjectLuzzy.Application.deps.json
+C:\_Personal\Luzzy\LuzzyTuor_Backend\src\ProjectLuzzy.Application\bin\Release\netcoreapp3.1\ProjectLuzzy.Application.dll
+C:\_Personal\Luzzy\LuzzyTuor_Backend\src\ProjectLuzzy.Application\bin\Release\netcoreapp3.1\ProjectLuzzy.Application.pdb
+C:\_Personal\Luzzy\LuzzyTuor_Backend\src\ProjectLuzzy.Application\bin\Release\netcoreapp3.1\ProjectLuzzy.Domain.dll
+C:\_Personal\Luzzy\LuzzyTuor_Backend\src\ProjectLuzzy.Application\bin\Release\netcoreapp3.1\ProjectLuzzy.Persistence.dll
+C:\_Personal\Luzzy\LuzzyTuor_Backend\src\ProjectLuzzy.Application\bin\Release\netcoreapp3.1\ProjectLuzzy.Domain.pdb
+C:\_Personal\Luzzy\LuzzyTuor_Backend\src\ProjectLuzzy.Application\bin\Release\netcoreapp3.1\ProjectLuzzy.Persistence.pdb
+C:\_Personal\Luzzy\LuzzyTuor_Backend\src\ProjectLuzzy.Application\obj\Release\netcoreapp3.1\ProjectLuzzy.Application.AssemblyInfoInputs.cache
+C:\_Personal\Luzzy\LuzzyTuor_Backend\src\ProjectLuzzy.Application\obj\Release\netcoreapp3.1\ProjectLuzzy.Application.AssemblyInfo.cs
+C:\_Personal\Luzzy\LuzzyTuor_Backend\src\ProjectLuzzy.Application\obj\Release\netcoreapp3.1\ProjectLuzzy.Application.csproj.CoreCompileInputs.cache
+C:\_Personal\Luzzy\LuzzyTuor_Backend\src\ProjectLuzzy.Application\obj\Release\netcoreapp3.1\ProjectLuzzy.Application.csproj.CopyComplete
+C:\_Personal\Luzzy\LuzzyTuor_Backend\src\ProjectLuzzy.Application\obj\Release\netcoreapp3.1\ProjectLuzzy.Application.dll
+C:\_Personal\Luzzy\LuzzyTuor_Backend\src\ProjectLuzzy.Application\obj\Release\netcoreapp3.1\ProjectLuzzy.Application.pdb
+C:\_Personal\Luzzy\LuzzyTuor_Backend\src\ProjectLuzzy.Application\obj\Release\netcoreapp3.1\ProjectLuzzy.Application.csprojAssemblyReference.cache

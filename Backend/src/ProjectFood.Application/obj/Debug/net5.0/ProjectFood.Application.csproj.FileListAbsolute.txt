@@ -1,0 +1,17 @@
+C:\_Personal\Restaurante\Backend\src\ProjectFood.Application\bin\Debug\net5.0\ProjectFood.Application.deps.json
+C:\_Personal\Restaurante\Backend\src\ProjectFood.Application\bin\Debug\net5.0\ProjectFood.Application.dll
+C:\_Personal\Restaurante\Backend\src\ProjectFood.Application\bin\Debug\net5.0\ref\ProjectFood.Application.dll
+C:\_Personal\Restaurante\Backend\src\ProjectFood.Application\bin\Debug\net5.0\ProjectFood.Application.pdb
+C:\_Personal\Restaurante\Backend\src\ProjectFood.Application\bin\Debug\net5.0\ProjectFood.Domain.dll
+C:\_Personal\Restaurante\Backend\src\ProjectFood.Application\bin\Debug\net5.0\ProjectFood.Persistence.dll
+C:\_Personal\Restaurante\Backend\src\ProjectFood.Application\bin\Debug\net5.0\ProjectFood.Domain.pdb
+C:\_Personal\Restaurante\Backend\src\ProjectFood.Application\bin\Debug\net5.0\ProjectFood.Persistence.pdb
+C:\_Personal\Restaurante\Backend\src\ProjectFood.Application\obj\Debug\net5.0\ProjectFood.Application.csproj.AssemblyReference.cache
+C:\_Personal\Restaurante\Backend\src\ProjectFood.Application\obj\Debug\net5.0\ProjectFood.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\_Personal\Restaurante\Backend\src\ProjectFood.Application\obj\Debug\net5.0\ProjectFood.Application.AssemblyInfoInputs.cache
+C:\_Personal\Restaurante\Backend\src\ProjectFood.Application\obj\Debug\net5.0\ProjectFood.Application.AssemblyInfo.cs
+C:\_Personal\Restaurante\Backend\src\ProjectFood.Application\obj\Debug\net5.0\ProjectFood.Application.csproj.CoreCompileInputs.cache
+C:\_Personal\Restaurante\Backend\src\ProjectFood.Application\obj\Debug\net5.0\ProjectFood.Application.csproj.CopyComplete
+C:\_Personal\Restaurante\Backend\src\ProjectFood.Application\obj\Debug\net5.0\ProjectFood.Application.dll
+C:\_Personal\Restaurante\Backend\src\ProjectFood.Application\obj\Debug\net5.0\ref\ProjectFood.Application.dll
+C:\_Personal\Restaurante\Backend\src\ProjectFood.Application\obj\Debug\net5.0\ProjectFood.Application.pdb
