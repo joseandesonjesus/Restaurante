@@ -3975,11 +3975,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\_Personal\\Restaurante\\Backend\\src\\ProjectFood.API\\ProjectFood.API.csproj",
+      "projectUniqueName": "C:\\_Personal\\RestauranteGit\\Restaurante\\Backend\\src\\ProjectFood.API\\ProjectFood.API.csproj",
       "projectName": "ProjectFood.API",
-      "projectPath": "C:\\_Personal\\Restaurante\\Backend\\src\\ProjectFood.API\\ProjectFood.API.csproj",
+      "projectPath": "C:\\_Personal\\RestauranteGit\\Restaurante\\Backend\\src\\ProjectFood.API\\ProjectFood.API.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\_Personal\\Restaurante\\Backend\\src\\ProjectFood.API\\obj\\",
+      "outputPath": "C:\\_Personal\\RestauranteGit\\Restaurante\\Backend\\src\\ProjectFood.API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -4002,11 +4002,11 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\_Personal\\Restaurante\\Backend\\src\\ProjectFood.Application\\ProjectFood.Application.csproj": {
-              "projectPath": "C:\\_Personal\\Restaurante\\Backend\\src\\ProjectFood.Application\\ProjectFood.Application.csproj"
+            "C:\\_Personal\\RestauranteGit\\Restaurante\\Backend\\src\\ProjectFood.Application\\ProjectFood.Application.csproj": {
+              "projectPath": "C:\\_Personal\\RestauranteGit\\Restaurante\\Backend\\src\\ProjectFood.Application\\ProjectFood.Application.csproj"
             },
-            "C:\\_Personal\\Restaurante\\Backend\\src\\ProjectFood.Persistence\\ProjectFood.Persistence.csproj": {
-              "projectPath": "C:\\_Personal\\Restaurante\\Backend\\src\\ProjectFood.Persistence\\ProjectFood.Persistence.csproj"
+            "C:\\_Personal\\RestauranteGit\\Restaurante\\Backend\\src\\ProjectFood.Persistence\\ProjectFood.Persistence.csproj": {
+              "projectPath": "C:\\_Personal\\RestauranteGit\\Restaurante\\Backend\\src\\ProjectFood.Persistence\\ProjectFood.Persistence.csproj"
             }
           }
         }

@@ -5,10 +5,9 @@ using System.Threading.Tasks;
 
 namespace ProjectFood.Application.Dtos
 {
-    public class UserLoginDto
+    public class FunctionDto
     {
-        public string UserName { get; set; }
-        public string Password { get; set; }
+        public int Id { get; set; }  
+        public string NameFunction { get; set; }
     }
 }
-

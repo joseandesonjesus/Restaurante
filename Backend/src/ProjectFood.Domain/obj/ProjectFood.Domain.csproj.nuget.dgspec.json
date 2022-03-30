@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\_Personal\\Restaurante\\Backend\\src\\ProjectFood.Domain\\ProjectFood.Domain.csproj": {}
+    "C:\\_Personal\\RestauranteGit\\Restaurante\\Backend\\src\\ProjectFood.Domain\\ProjectFood.Domain.csproj": {}
   },
   "projects": {
-    "C:\\_Personal\\Restaurante\\Backend\\src\\ProjectFood.Domain\\ProjectFood.Domain.csproj": {
+    "C:\\_Personal\\RestauranteGit\\Restaurante\\Backend\\src\\ProjectFood.Domain\\ProjectFood.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\_Personal\\Restaurante\\Backend\\src\\ProjectFood.Domain\\ProjectFood.Domain.csproj",
+        "projectUniqueName": "C:\\_Personal\\RestauranteGit\\Restaurante\\Backend\\src\\ProjectFood.Domain\\ProjectFood.Domain.csproj",
         "projectName": "ProjectFood.Domain",
-        "projectPath": "C:\\_Personal\\Restaurante\\Backend\\src\\ProjectFood.Domain\\ProjectFood.Domain.csproj",
+        "projectPath": "C:\\_Personal\\RestauranteGit\\Restaurante\\Backend\\src\\ProjectFood.Domain\\ProjectFood.Domain.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\_Personal\\Restaurante\\Backend\\src\\ProjectFood.Domain\\obj\\",
+        "outputPath": "C:\\_Personal\\RestauranteGit\\Restaurante\\Backend\\src\\ProjectFood.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjectFood.Persistence.Contexts;
 
 namespace ProjectFood.Persistence.Migrations
 {
     [DbContext(typeof(ProjectFoodContext))]
-    partial class ProjectFoodContextModelSnapshot : ModelSnapshot
+    [Migration("20220330202234_CDB")]
+    partial class CDB
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

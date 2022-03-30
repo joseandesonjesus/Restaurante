@@ -29,6 +29,7 @@ namespace ProjectFood.Application
             _persistence = persistence;
             _mapper = mapper;
             _userPersist = userPersist;
+            _userManager = userManager;
 
         }
 

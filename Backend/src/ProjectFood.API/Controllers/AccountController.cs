@@ -34,27 +34,13 @@ namespace ProjectFood.API.Controllers
         }
 
         [HttpGet("GetUser")]
-        [AllowAnonymous]
         public async Task<IActionResult> GetUser()
         {
-            //return Ok("Teste API");
             try
             {
-                // var userName = User.FindFirst(ClaimTypes.Name)?.Value;
                 var userName = User.GetUserName();
                 var user = await _accountService.GetUserByUserNameAsync(userName);
-
-                if (user == null)
-                {
-                    return NoContent();
-                }
-                else
-                {
-                    return Ok(user);
-                }
-
-
-                //return user == null ? NoContent() : Ok(user);
+                return user == null ? NoContent() : Ok(user);
             }
             catch (Exception ex)
             {
@@ -66,7 +52,7 @@ namespace ProjectFood.API.Controllers
 
         [HttpPost("Register")]
         [AllowAnonymous]
-        public async Task<IActionResult> Register(UserDto userDto)
+        public async Task<IActionResult> Register(UserUpdateDto userDto) // (UserDto userDto)
         {
             try
             {
@@ -106,8 +92,10 @@ namespace ProjectFood.API.Controllers
                 return Ok(
                     new
                     {
-                        userName = user.UserName,
+                        UserName = user.UserName,
                         PrimeiroNome = user.FirstName,
+                        Title = user.Title,
+                        Function = user.Function,
                         token = _tokenService.CreateToken(user).Result
                     }
                 );
@@ -122,7 +110,6 @@ namespace ProjectFood.API.Controllers
         }
 
         [HttpPut("UpdateUser")]
-        // [AllowAnonymous]
         public async Task<IActionResult> UpdateUser(UserUpdateDto userUpdateDto)
         {
             try
@@ -142,6 +129,23 @@ namespace ProjectFood.API.Controllers
             {
                 return this.StatusCode(StatusCodes.Status500InternalServerError,
                 $"Erro ao atualizar conta, erro: {ex.Message}");
+            }
+        }
+
+       
+        [HttpPost("RegisterTitle")]
+        public async Task<IActionResult> Post(TitleDto model)
+        {
+            try
+            {
+                var title = await _accountService.CreateTitle(User.GetUserId(), model);
+                if(title == null) return NoContent(); 
+                return Ok(title);
+            }
+            catch (Exception ex)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError,
+                $"Erro executar comando, erro: {ex.Message}");
             }
         }
 

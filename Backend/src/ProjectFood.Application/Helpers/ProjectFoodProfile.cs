@@ -21,6 +21,8 @@ namespace ProjectFood.Application.Helpers
          CreateMap<User, UserLoginDto>().ReverseMap();
          CreateMap<User, UserUpdateDto>().ReverseMap();
          CreateMap<Images, ImagesDto>().ReverseMap();
+         CreateMap<Title, TitleDto>().ReverseMap();
+         CreateMap<Function, FunctionDto>().ReverseMap();
          
      }   
     }

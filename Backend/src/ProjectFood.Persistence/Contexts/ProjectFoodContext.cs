@@ -17,6 +17,8 @@ namespace ProjectFood.Persistence.Contexts
         }
 
         public DbSet<Product> Products { get; set; }
+        public DbSet<Title> Titles { get; set; }
+        public DbSet<Function> Functions { get; set; }
         public DbSet<Category> Category { get; set; }
         public DbSet<ProductCategory> ProductCategory { get; set; }
 
@@ -84,6 +86,11 @@ namespace ProjectFood.Persistence.Contexts
             .HasMany(e => e.Category)
             .WithOne(rs => rs.Product)
             .OnDelete(DeleteBehavior.Cascade);
+
+             modelBuilder.Entity<Title>(entity =>
+            {
+                entity.HasKey(r => r.Id);
+            });
         }
 
     }

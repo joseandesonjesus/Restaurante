@@ -16,6 +16,9 @@ namespace ProjectFood.Application.Interfaces
         Task<UserDto> CreateAccountAsync(UserDto userDto);
         Task<UserUpdateDto> UpdateAccount(UserUpdateDto userUpdateDto);
     
-    
+        Task<TitleDto> CreateTitle(int userId, TitleDto titleDto);
+        Task<TitleDto> UpdateTitle(TitleDto titleDto);
+        Task<FunctionDto> CreateFunction(FunctionDto functionDto);
+        Task<FunctionDto> UpdateFunction(FunctionDto functionDto);
     }
 }

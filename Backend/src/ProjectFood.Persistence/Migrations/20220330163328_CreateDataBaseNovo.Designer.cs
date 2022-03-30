@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjectFood.Persistence.Contexts;
 
 namespace ProjectFood.Persistence.Migrations
 {
     [DbContext(typeof(ProjectFoodContext))]
-    partial class ProjectFoodContextModelSnapshot : ModelSnapshot
+    [Migration("20220330163328_CreateDataBaseNovo")]
+    partial class CreateDataBaseNovo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -211,7 +213,12 @@ namespace ProjectFood.Persistence.Migrations
                     b.Property<string>("NameFunction")
                         .HasColumnType("TEXT");
 
+                    b.Property<int?>("UserId")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Functions");
                 });
@@ -270,9 +277,6 @@ namespace ProjectFood.Persistence.Migrations
                     b.Property<string>("FirstName")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Function")
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("ImageURL")
                         .HasColumnType("TEXT");
 
@@ -303,9 +307,6 @@ namespace ProjectFood.Persistence.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("SecurityStamp")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Title")
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("TwoFactorEnabled")
@@ -416,7 +417,12 @@ namespace ProjectFood.Persistence.Migrations
                     b.Property<string>("NameTitle")
                         .HasColumnType("TEXT");
 
+                    b.Property<int?>("UserId")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Titles");
                 });
@@ -465,6 +471,13 @@ namespace ProjectFood.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("ProjectFood.Domain.Function", b =>
+                {
+                    b.HasOne("ProjectFood.Domain.Identity.User", null)
+                        .WithMany("Function")
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("ProjectFood.Domain.Identity.UserRole", b =>
@@ -531,6 +544,13 @@ namespace ProjectFood.Persistence.Migrations
                     b.Navigation("product");
                 });
 
+            modelBuilder.Entity("ProjectFood.Domain.Title", b =>
+                {
+                    b.HasOne("ProjectFood.Domain.Identity.User", null)
+                        .WithMany("Title")
+                        .HasForeignKey("UserId");
+                });
+
             modelBuilder.Entity("ProjectFood.Domain.Identity.Role", b =>
                 {
                     b.Navigation("UserRoles");
@@ -538,6 +558,10 @@ namespace ProjectFood.Persistence.Migrations
 
             modelBuilder.Entity("ProjectFood.Domain.Identity.User", b =>
                 {
+                    b.Navigation("Function");
+
+                    b.Navigation("Title");
+
                     b.Navigation("UserRoles");
                 });
 
