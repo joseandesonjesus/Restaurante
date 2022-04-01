@@ -14,6 +14,7 @@ namespace ProjectFood.Application
     {
         private readonly IPersistence _persistence;
         private readonly IProductPersistence _productPersistence;
+        
         private readonly IMapper _mapper;
         private readonly IUserPersist _userPersist;
         private readonly UserManager<User> _userManager;
@@ -158,7 +159,5 @@ namespace ProjectFood.Application
                 throw new Exception("Error: " + ex.Message);
             }
         }
-
-
     }
 }

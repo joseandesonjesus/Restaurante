@@ -17,6 +17,5 @@ namespace ProjectFood.Application.Interfaces
         
         Task<ProductDto> GetProductByIdAsync(int userId, int ProductId, bool includeCategory);
 
-
     }
 }

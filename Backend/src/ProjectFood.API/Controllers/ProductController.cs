@@ -94,8 +94,8 @@ namespace ProjectFood.API.Controllers
         {
             try
             {
-                var product = await _productService.GetAllProductsByNameAsync (User.GetUserId(), nameProduct, true);
-                if(product == null) return NoContent();
+                var product = await _productService.GetAllProductsByNameAsync(User.GetUserId(), nameProduct, true);
+                if (product == null) return NoContent();
                 return Ok(product);
             }
             catch (Exception ex)
