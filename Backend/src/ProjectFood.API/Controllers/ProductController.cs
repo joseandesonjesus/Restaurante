@@ -20,13 +20,16 @@ namespace ProjectFood.API.Controllers
     public class ProductController : ControllerBase
     {
         private readonly IProductService _productService;
+        private readonly ICategoryService _categoryService;
         private readonly IMapper _mapper;
         private readonly IAccountService _accountService;
 
-        public ProductController(IProductService productService
-        ,IMapper mapper,
+        public ProductController(IProductService productService,
+            ICategoryService categoryService,
+            IMapper mapper,
         IAccountService accountService ){
             _productService = productService;
+            _categoryService = categoryService;
             _mapper = mapper;
             _accountService = accountService;
         }
@@ -49,6 +52,7 @@ namespace ProjectFood.API.Controllers
                 
                 foreach (var productRet in products)
                 {
+                    var categories = await _categoryService.GetCategoryByIdAsync(productRet.CategoryId);
                     Console.WriteLine("productRet => " + productRet);
                     productsReturn.Add(new ProductDto(){
                         Id = productRet.Id,
@@ -58,7 +62,7 @@ namespace ProjectFood.API.Controllers
                         Discount = productRet.Discount,
                         DateRegister = productRet.DateRegister,
                         StatusProduct = productRet.StatusProduct,
-                        Category = productRet.Category
+                        Category = categories
                     });
                 }
 

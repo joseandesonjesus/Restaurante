@@ -44,6 +44,23 @@ namespace ProjectFood.Application
             }
         }
 
+        public async Task<CategoryDto> GetCategoryByIdAsync(int id)
+        {
+            try
+            {
+                var category = await _categoryPersistence.GetCategoryByIdAsync(id);
+                if (category == null) return null;
+
+                var categoryRet = _mapper.Map<CategoryDto>(category);
+
+                return categoryRet;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error: " + ex.Message);
+            }
+        }
+
         public async Task<CategoryDto> AddCategories(CategoryDto model)
         {
             try

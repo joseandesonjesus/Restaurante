@@ -11,6 +11,7 @@ namespace ProjectFood.Application.Interfaces
     {
 
         Task<CategoryDto[]> GetAllCategoriesAsync();
+        Task<CategoryDto> GetCategoryByIdAsync(int ProductId);
         Task<CategoryDto> AddCategories(CategoryDto model);
     }
 }

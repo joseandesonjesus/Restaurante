@@ -15,7 +15,7 @@ namespace ProjectFood.Application.Helpers
      {
          CreateMap<Product, ProductDto>().ReverseMap();
          CreateMap<Category, CategoryDto>().ReverseMap();
-         CreateMap<ProductCategory, ProductCategoryDto>().ReverseMap();
+         //CreateMap<ProductCategory, ProductCategoryDto>().ReverseMap();
          CreateMap<ProductImage, ProductImageDto>().ReverseMap();
          CreateMap<User, UserDto>().ReverseMap();
          CreateMap<User, UserLoginDto>().ReverseMap();
@@ -23,6 +23,8 @@ namespace ProjectFood.Application.Helpers
          CreateMap<Images, ImagesDto>().ReverseMap();
          CreateMap<Title, TitleDto>().ReverseMap();
          CreateMap<Function, FunctionDto>().ReverseMap();
+         CreateMap<InTable, InTableDto>().ReverseMap();
+         CreateMap<BulkProduct, BulkProductDto>().ReverseMap();
          
      }   
     }

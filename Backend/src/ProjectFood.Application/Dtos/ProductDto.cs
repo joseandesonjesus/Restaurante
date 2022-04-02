@@ -19,9 +19,9 @@ namespace ProjectFood.Application.Dtos
         public int Discount { get; set; }
         public string DateRegister { get; set; }
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public bool StatusProduct { get; set; } 
-
-        public IEnumerable<CategoryDto> Category { get; set; }
+        public bool StatusProduct { get; set; }
+        public int CategoryId { get; set; }
+        public CategoryDto Category { get; set; }
 
     }
 }

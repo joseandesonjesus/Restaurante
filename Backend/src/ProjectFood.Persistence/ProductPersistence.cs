@@ -23,11 +23,11 @@ namespace ProjectFood.Persistence
         {
             IQueryable<Product> query = _context.Products
                                                 .Include(e => e.Image);
-                                        // .Include(e => e.Category);
+                                                // .Include(e => e.Category);
 
-            if(includeCategory){
+            if (includeCategory){
                 query = query.Include(e => e.Category)
-            //                  .ThenInclude(ce => ce.NameCategory)
+                    //.ThenInclude(ce => ce.NameCategory)
             ;
             }
             

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "lRjdQMQJ4Ixt2kBr6d5bgJHl8jNZiyQE0Zb56wwnCbho8bEvrzb+7MQeTpTvWvFgYXtMBrzYUnaH3fMXJLA5cA==",
+  "dgSpecHash": "/pcd/TOGVstKvhbwnNJlxAh1Hokm267n/HXNjWF61LyphlSu8aN5xx8pztaFUlGDhBpC1Zhr7NXHF2YEMQ7r2w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\USER\\source\\repos\\Restaurante\\Backend\\src\\ProjectFood.Api\\ProjectFood.API.csproj",
+  "projectFilePath": "C:\\Users\\USER\\source\\repos\\Restaurante\\Backend\\src\\ProjectFood.API\\ProjectFood.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\USER\\.nuget\\packages\\automapper\\11.0.0\\automapper.11.0.0.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",

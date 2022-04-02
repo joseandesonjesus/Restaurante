@@ -7,9 +7,9 @@ namespace ProjectFood.Application.Dtos
 {
     public class ProductCategoryDto
     {
-        public int productId { get; set; }
-        public ProductDto product { get; set; }
-        public int categoryId { get; set; }
-        public CategoryDto category { get; set; }
+        //public int productId { get; set; }
+        //public ProductDto product { get; set; }
+        //public int categoryId { get; set; }
+        //public CategoryDto category { get; set; }
     }
 }

@@ -9,8 +9,8 @@ using ProjectFood.Persistence.Contexts;
 namespace ProjectFood.Persistence.Migrations
 {
     [DbContext(typeof(ProjectFoodContext))]
-    [Migration("20220330163328_CreateDataBaseNovo")]
-    partial class CreateDataBaseNovo
+    [Migration("20220402070619_CreateDataBase")]
+    partial class CreateDataBase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -182,6 +182,20 @@ namespace ProjectFood.Persistence.Migrations
                     b.ToTable("IdentityUserToken<string>");
                 });
 
+            modelBuilder.Entity("ProjectFood.Domain.BulkProduct", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("NameBulk")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Bulks");
+                });
+
             modelBuilder.Entity("ProjectFood.Domain.Category", b =>
                 {
                     b.Property<int>("Id")
@@ -194,12 +208,7 @@ namespace ProjectFood.Persistence.Migrations
                     b.Property<string>("NameCategory")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("ProductId")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
 
                     b.ToTable("Category");
                 });
@@ -213,12 +222,7 @@ namespace ProjectFood.Persistence.Migrations
                     b.Property<string>("NameFunction")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("UserId")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Functions");
                 });
@@ -277,6 +281,9 @@ namespace ProjectFood.Persistence.Migrations
                     b.Property<string>("FirstName")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Function")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("ImageURL")
                         .HasColumnType("TEXT");
 
@@ -307,6 +314,9 @@ namespace ProjectFood.Persistence.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("SecurityStamp")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Title")
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("TwoFactorEnabled")
@@ -362,10 +372,27 @@ namespace ProjectFood.Persistence.Migrations
                     b.ToTable("Images");
                 });
 
+            modelBuilder.Entity("ProjectFood.Domain.InTable", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("StatusTable")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Tables");
+                });
+
             modelBuilder.Entity("ProjectFood.Domain.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("CategoryId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("DateRegister")
@@ -388,24 +415,11 @@ namespace ProjectFood.Persistence.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CategoryId");
+
                     b.HasIndex("UserId");
 
                     b.ToTable("Products");
-                });
-
-            modelBuilder.Entity("ProjectFood.Domain.ProductCategory", b =>
-                {
-                    b.Property<int>("productId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("categoryId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("productId", "categoryId");
-
-                    b.HasIndex("categoryId");
-
-                    b.ToTable("ProductCategory");
                 });
 
             modelBuilder.Entity("ProjectFood.Domain.Title", b =>
@@ -417,12 +431,7 @@ namespace ProjectFood.Persistence.Migrations
                     b.Property<string>("NameTitle")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("UserId")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Titles");
                 });
@@ -463,23 +472,6 @@ namespace ProjectFood.Persistence.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("ProjectFood.Domain.Category", b =>
-                {
-                    b.HasOne("ProjectFood.Domain.Product", "Product")
-                        .WithMany("Category")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("ProjectFood.Domain.Function", b =>
-                {
-                    b.HasOne("ProjectFood.Domain.Identity.User", null)
-                        .WithMany("Function")
-                        .HasForeignKey("UserId");
-                });
-
             modelBuilder.Entity("ProjectFood.Domain.Identity.UserRole", b =>
                 {
                     b.HasOne("ProjectFood.Domain.Identity.Role", "Role")
@@ -516,39 +508,21 @@ namespace ProjectFood.Persistence.Migrations
 
             modelBuilder.Entity("ProjectFood.Domain.Product", b =>
                 {
+                    b.HasOne("ProjectFood.Domain.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("ProjectFood.Domain.Identity.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("Category");
+
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("ProjectFood.Domain.ProductCategory", b =>
-                {
-                    b.HasOne("ProjectFood.Domain.Category", "category")
-                        .WithMany()
-                        .HasForeignKey("categoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ProjectFood.Domain.Product", "product")
-                        .WithMany()
-                        .HasForeignKey("productId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("category");
-
-                    b.Navigation("product");
-                });
-
-            modelBuilder.Entity("ProjectFood.Domain.Title", b =>
-                {
-                    b.HasOne("ProjectFood.Domain.Identity.User", null)
-                        .WithMany("Title")
-                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("ProjectFood.Domain.Identity.Role", b =>
@@ -558,17 +532,11 @@ namespace ProjectFood.Persistence.Migrations
 
             modelBuilder.Entity("ProjectFood.Domain.Identity.User", b =>
                 {
-                    b.Navigation("Function");
-
-                    b.Navigation("Title");
-
                     b.Navigation("UserRoles");
                 });
 
             modelBuilder.Entity("ProjectFood.Domain.Product", b =>
                 {
-                    b.Navigation("Category");
-
                     b.Navigation("Image");
                 });
 #pragma warning restore 612, 618

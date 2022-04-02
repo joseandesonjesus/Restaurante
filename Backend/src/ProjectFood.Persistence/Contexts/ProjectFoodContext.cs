@@ -20,7 +20,9 @@ namespace ProjectFood.Persistence.Contexts
         public DbSet<Title> Titles { get; set; }
         public DbSet<Function> Functions { get; set; }
         public DbSet<Category> Category { get; set; }
-        public DbSet<ProductCategory> ProductCategory { get; set; }
+        //public DbSet<ProductCategory> ProductCategory { get; set; }
+        public DbSet<InTable> Tables { get; set; }
+        public DbSet<BulkProduct> Bulks { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -79,15 +81,35 @@ namespace ProjectFood.Persistence.Contexts
             );
 
 
-            modelBuilder.Entity<ProductCategory>()
-            .HasKey(PE => new { PE.productId, PE.categoryId });
+            //modelBuilder.Entity<ProductCategory>()
+            //.HasKey(PE => new { PE.productId, PE.categoryId });
 
-            modelBuilder.Entity<Product>()
-            .HasMany(e => e.Category)
-            .WithOne(rs => rs.Product)
-            .OnDelete(DeleteBehavior.Cascade);
+            //modelBuilder.Entity<Product>()
+            //.HasMany(e => e.Category)
+            //.WithOne(rs => rs.Product)
+            //.OnDelete(DeleteBehavior.Cascade);
+            
+            modelBuilder.Entity<Category>(entity =>
+            {
+                entity.HasKey(r => r.Id);
+            });
+            
+            modelBuilder.Entity<Product>(entity =>
+            {
+                entity.HasKey(r => r.Id);
+            });
+            
+            modelBuilder.Entity<Title>(entity =>
+            {
+                entity.HasKey(r => r.Id);
+            });
 
-             modelBuilder.Entity<Title>(entity =>
+            modelBuilder.Entity<InTable>(entity =>
+            {
+                entity.HasKey(r => r.Id);
+            });
+
+            modelBuilder.Entity<BulkProduct>(entity =>
             {
                 entity.HasKey(r => r.Id);
             });

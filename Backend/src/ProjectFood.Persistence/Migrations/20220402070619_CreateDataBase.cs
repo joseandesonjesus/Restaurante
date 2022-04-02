@@ -30,9 +30,9 @@ namespace ProjectFood.Persistence.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     FirstName = table.Column<string>(type: "TEXT", nullable: true),
                     SecondName = table.Column<string>(type: "TEXT", nullable: true),
-                    Title = table.Column<int>(type: "INTEGER", nullable: false),
+                    Title = table.Column<string>(type: "TEXT", nullable: true),
                     Description = table.Column<string>(type: "TEXT", nullable: true),
-                    Function = table.Column<int>(type: "INTEGER", nullable: false),
+                    Function = table.Column<string>(type: "TEXT", nullable: true),
                     ImageURL = table.Column<string>(type: "TEXT", nullable: true),
                     UserName = table.Column<string>(type: "TEXT", maxLength: 127, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "TEXT", maxLength: 127, nullable: true),
@@ -52,6 +52,46 @@ namespace ProjectFood.Persistence.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Bulks",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    NameBulk = table.Column<string>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Bulks", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Category",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    NameCategory = table.Column<string>(type: "TEXT", nullable: true),
+                    BulkProduct = table.Column<string>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Category", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Functions",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    NameFunction = table.Column<string>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Functions", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -106,6 +146,32 @@ namespace ProjectFood.Persistence.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_IdentityUserToken<string>", x => new { x.UserId, x.LoginProvider, x.Name });
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Tables",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    StatusTable = table.Column<bool>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Tables", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Titles",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    NameTitle = table.Column<string>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Titles", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -231,7 +297,8 @@ namespace ProjectFood.Persistence.Migrations
                     Discount = table.Column<int>(type: "INTEGER", nullable: false),
                     DateRegister = table.Column<string>(type: "TEXT", nullable: true),
                     StatusProduct = table.Column<bool>(type: "INTEGER", nullable: false),
-                    UserId = table.Column<int>(type: "INTEGER", nullable: false)
+                    UserId = table.Column<int>(type: "INTEGER", nullable: false),
+                    CategoryId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -242,25 +309,10 @@ namespace ProjectFood.Persistence.Migrations
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Category",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    NameCategory = table.Column<string>(type: "TEXT", nullable: true),
-                    BulkProduct = table.Column<string>(type: "TEXT", nullable: true),
-                    ProductId = table.Column<int>(type: "INTEGER", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Category", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Category_Products_ProductId",
-                        column: x => x.ProductId,
-                        principalTable: "Products",
+                        name: "FK_Products_Category_CategoryId",
+                        column: x => x.CategoryId,
+                        principalTable: "Category",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -283,30 +335,6 @@ namespace ProjectFood.Persistence.Migrations
                         principalTable: "Products",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ProductCategory",
-                columns: table => new
-                {
-                    productId = table.Column<int>(type: "INTEGER", nullable: false),
-                    categoryId = table.Column<int>(type: "INTEGER", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ProductCategory", x => new { x.productId, x.categoryId });
-                    table.ForeignKey(
-                        name: "FK_ProductCategory_Category_categoryId",
-                        column: x => x.categoryId,
-                        principalTable: "Category",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ProductCategory_Products_productId",
-                        column: x => x.productId,
-                        principalTable: "Products",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -347,19 +375,14 @@ namespace ProjectFood.Persistence.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Category_ProductId",
-                table: "Category",
-                column: "ProductId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Images_ProductId",
                 table: "Images",
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProductCategory_categoryId",
-                table: "ProductCategory",
-                column: "categoryId");
+                name: "IX_Products_CategoryId",
+                table: "Products",
+                column: "CategoryId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Products_UserId",
@@ -385,6 +408,12 @@ namespace ProjectFood.Persistence.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Bulks");
+
+            migrationBuilder.DropTable(
+                name: "Functions");
+
+            migrationBuilder.DropTable(
                 name: "IdentityRole");
 
             migrationBuilder.DropTable(
@@ -400,19 +429,22 @@ namespace ProjectFood.Persistence.Migrations
                 name: "Images");
 
             migrationBuilder.DropTable(
-                name: "ProductCategory");
+                name: "Tables");
+
+            migrationBuilder.DropTable(
+                name: "Titles");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
-
-            migrationBuilder.DropTable(
-                name: "Category");
 
             migrationBuilder.DropTable(
                 name: "Products");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Category");
         }
     }
 }

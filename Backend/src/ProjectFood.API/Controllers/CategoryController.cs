@@ -44,12 +44,28 @@ namespace ProjectFood.API.Controllers
                         Id = categoryRet.Id,
                         NameCategory = categoryRet.NameCategory,
                         BulkProduct = categoryRet.BulkProduct,
-                        ProductId = categoryRet.ProductId
+                        //ProductId = categoryRet.ProductId
                     });
                 }
 
 
                 return Ok(categoriesReturn);
+            }
+            catch (Exception ex)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError,
+                $"Erro ao buscasr exento, erro: {ex.Message}");
+            }
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get(int id)
+        {
+            try
+            {
+                var category = await _categoryService.GetCategoryByIdAsync(id);
+                if (category == null) return NoContent();
+                return Ok(category);
             }
             catch (Exception ex)
             {
