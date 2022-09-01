@@ -9,8 +9,8 @@ namespace ProjectFood.Application.Interfaces
 {
     public interface ICategoryService
     {
-
         Task<CategoryDto[]> GetAllCategoriesAsync();
+        Task<CategoryDto[]> GetAllCategoriesByNameAsync(string nameCategory);
         Task<CategoryDto> GetCategoryByIdAsync(int ProductId);
         Task<CategoryDto> AddCategories(CategoryDto model);
     }

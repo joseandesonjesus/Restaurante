@@ -10,6 +10,7 @@ namespace ProjectFood.Application.Interfaces
     public interface IBulkProductService
     {
         Task<BulkProductDto> AddBulks(BulkProductDto model);
+        Task<BulkProductDto> GetBulkByIdAsync(int BulkId);
         Task<BulkProductDto[]> GetAllBulksAsync();
     }
 }

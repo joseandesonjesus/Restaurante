@@ -38,7 +38,6 @@ namespace ProjectFood.API.Controllers
 
                 foreach (var tableRet in tables)
                 {
-                    Console.WriteLine("categoryRet => " + tableRet);
                     tablesReturn.Add(new InTableDto()
                     {
                         Id = tableRet.Id,
@@ -48,6 +47,22 @@ namespace ProjectFood.API.Controllers
 
 
                 return Ok(tablesReturn);
+            }
+            catch (Exception ex)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError,
+                $"Erro ao buscasr exento, erro: {ex.Message}");
+            }
+        }
+
+        [HttpGet("ById/{id}")]
+        public async Task<IActionResult> Get(int id)
+        {
+            try
+            {
+                var obj = await _tableService.GetTableByIdAsync(id);
+                if (obj == null) return NoContent();
+                return Ok(obj);
             }
             catch (Exception ex)
             {
@@ -69,6 +84,22 @@ namespace ProjectFood.API.Controllers
             {
                 return this.StatusCode(StatusCodes.Status500InternalServerError,
                 $"Erro ao buscasr exento, erro: {ex.Message}");
+            }
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> Put(InTableDto model)
+        {
+            try
+            {
+                var obj = await _tableService.UpdateTable(model);
+                if (obj == null) return BadRequest("Não foi possivel atualizar");
+                return Ok(obj);
+            }
+            catch (Exception ex)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError,
+                $"Erro ao adicionar produto, erro: {ex.Message}");
             }
         }
     }

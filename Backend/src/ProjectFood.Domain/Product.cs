@@ -14,11 +14,12 @@ namespace ProjectFood.Domain
         public IEnumerable<Images> Image { get; set; }
         public string NameProduct { get; set; }
         public decimal PriceProduct { get; set; }
-        public int Discount { get; set; }
         public string DateRegister { get; set; }
         public bool StatusProduct { get; set; } 
         public int UserId { get; set; }
         public User User { get; set; }
+        public int BulkProductId { get; set; }
+        public BulkProduct BulkProduct { get; set; }
         public int CategoryId { get; set; }
         public Category Category { get; set; }
 

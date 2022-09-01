@@ -60,7 +60,8 @@ namespace ProjectFood.Persistence.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    NameBulk = table.Column<string>(type: "TEXT", nullable: true)
+                    NameBulk = table.Column<string>(type: "TEXT", nullable: true),
+                    Abbreviation = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -74,7 +75,7 @@ namespace ProjectFood.Persistence.Migrations
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     NameCategory = table.Column<string>(type: "TEXT", nullable: true),
-                    BulkProduct = table.Column<string>(type: "TEXT", nullable: true)
+                    ColorCategory = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -294,10 +295,10 @@ namespace ProjectFood.Persistence.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     NameProduct = table.Column<string>(type: "TEXT", nullable: true),
                     PriceProduct = table.Column<decimal>(type: "TEXT", nullable: false),
-                    Discount = table.Column<int>(type: "INTEGER", nullable: false),
                     DateRegister = table.Column<string>(type: "TEXT", nullable: true),
                     StatusProduct = table.Column<bool>(type: "INTEGER", nullable: false),
                     UserId = table.Column<int>(type: "INTEGER", nullable: false),
+                    BulkProductId = table.Column<int>(type: "INTEGER", nullable: false),
                     CategoryId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
@@ -307,6 +308,12 @@ namespace ProjectFood.Persistence.Migrations
                         name: "FK_Products_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Products_Bulks_BulkProductId",
+                        column: x => x.BulkProductId,
+                        principalTable: "Bulks",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -335,6 +342,36 @@ namespace ProjectFood.Persistence.Migrations
                         principalTable: "Products",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "OrdersTables",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    InTableId = table.Column<int>(type: "INTEGER", nullable: false),
+                    ProductId = table.Column<int>(type: "INTEGER", nullable: false),
+                    Amount = table.Column<int>(type: "INTEGER", nullable: false),
+                    Obs = table.Column<string>(type: "TEXT", nullable: true),
+                    Opened = table.Column<string>(type: "TEXT", nullable: true),
+                    Closed = table.Column<string>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OrdersTables", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_OrdersTables_Products_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Products",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_OrdersTables_Tables_InTableId",
+                        column: x => x.InTableId,
+                        principalTable: "Tables",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -380,6 +417,21 @@ namespace ProjectFood.Persistence.Migrations
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_OrdersTables_InTableId",
+                table: "OrdersTables",
+                column: "InTableId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OrdersTables_ProductId",
+                table: "OrdersTables",
+                column: "ProductId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Products_BulkProductId",
+                table: "Products",
+                column: "BulkProductId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Products_CategoryId",
                 table: "Products",
                 column: "CategoryId");
@@ -408,9 +460,6 @@ namespace ProjectFood.Persistence.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Bulks");
-
-            migrationBuilder.DropTable(
                 name: "Functions");
 
             migrationBuilder.DropTable(
@@ -429,7 +478,7 @@ namespace ProjectFood.Persistence.Migrations
                 name: "Images");
 
             migrationBuilder.DropTable(
-                name: "Tables");
+                name: "OrdersTables");
 
             migrationBuilder.DropTable(
                 name: "Titles");
@@ -441,7 +490,13 @@ namespace ProjectFood.Persistence.Migrations
                 name: "Products");
 
             migrationBuilder.DropTable(
+                name: "Tables");
+
+            migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Bulks");
 
             migrationBuilder.DropTable(
                 name: "Category");

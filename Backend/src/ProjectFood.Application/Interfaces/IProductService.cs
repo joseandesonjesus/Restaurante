@@ -16,6 +16,7 @@ namespace ProjectFood.Application.Interfaces
         // Task<ProductDto[]> GetAllProductsAsync(User user, bool includeCategory);
         
         Task<ProductDto> GetProductByIdAsync(int userId, int ProductId, bool includeCategory);
+        Task<ProductDto[]> GetProductByIdCategoryAsync(int userId, int CategoryId, bool includeCategory);
 
     }
 }

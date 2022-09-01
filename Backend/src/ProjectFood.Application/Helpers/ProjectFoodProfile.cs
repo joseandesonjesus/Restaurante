@@ -25,6 +25,7 @@ namespace ProjectFood.Application.Helpers
          CreateMap<Function, FunctionDto>().ReverseMap();
          CreateMap<InTable, InTableDto>().ReverseMap();
          CreateMap<BulkProduct, BulkProductDto>().ReverseMap();
+         CreateMap<OrdersTable, OrdersTableDto>().ReverseMap();
          
      }   
     }

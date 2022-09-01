@@ -8,7 +8,7 @@ namespace ProjectFood.Persistence.Interfaces
 {
     public interface ICategoryPersistence
     {
-        Task<Category[]> GetAllCategoryByNameAsync(string Name);
+        Task<Category[]> GetAllCategoriesByNameAsync(string Name);
         Task<Category[]> GetAllCategoryAsync();
         Task<Category> GetCategoryByIdAsync(int CategoryId);
     }

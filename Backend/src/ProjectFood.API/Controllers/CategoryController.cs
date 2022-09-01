@@ -43,8 +43,7 @@ namespace ProjectFood.API.Controllers
                     {
                         Id = categoryRet.Id,
                         NameCategory = categoryRet.NameCategory,
-                        BulkProduct = categoryRet.BulkProduct,
-                        //ProductId = categoryRet.ProductId
+                        ColorCategory = categoryRet.ColorCategory
                     });
                 }
 
@@ -58,7 +57,7 @@ namespace ProjectFood.API.Controllers
             }
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("ById/{id}")]
         public async Task<IActionResult> Get(int id)
         {
             try
@@ -74,11 +73,26 @@ namespace ProjectFood.API.Controllers
             }
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Post(CategoryDto model)
+        [HttpGet("ByName/{nameCategory}")]
+        public async Task<IActionResult> Get(string nameCategory)
         {
             try
             {
+                var name = await _categoryService.GetAllCategoriesByNameAsync(nameCategory);
+                if (name == null) return NoContent();
+                return Ok(name);
+            }
+            catch (Exception ex)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError,
+                $"Erro ao buscasr exento, erro: {ex.Message}");
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Post(CategoryDto model)
+        {
+            try {
                 var product = await _categoryService.AddCategories(model);
                 if (product == null) return NoContent(); //BadRequest("Não foi possivel cadastrar");
                 return Ok(product);

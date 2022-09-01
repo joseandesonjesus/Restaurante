@@ -42,12 +42,29 @@ namespace ProjectFood.API.Controllers
                     bulksReturn.Add(new BulkProductDto()
                     {
                         Id = bulkRet.Id,
-                        NameBulk = bulkRet.NameBulk
+                        NameBulk = bulkRet.NameBulk,
+                        Abbreviation = bulkRet.Abbreviation
                     });
                 }
 
 
                 return Ok(bulksReturn);
+            }
+            catch (Exception ex)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError,
+                $"Erro ao buscasr exento, erro: {ex.Message}");
+            }
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get(int id)
+        {
+            try
+            {
+                var bulk = await _bulkProductService.GetBulkByIdAsync(id);
+                if (bulk == null) return NoContent();
+                return Ok(bulk);
             }
             catch (Exception ex)
             {

@@ -32,7 +32,7 @@ namespace ProjectFood.Persistence
             return await query.ToArrayAsync();
         }
 
-        public async Task<Category[]> GetAllCategoryByNameAsync(string Name)
+        public async Task<Category[]> GetAllCategoriesByNameAsync(string Name)
         {
             IQueryable<Category> query = _context.Category;
 
@@ -41,7 +41,7 @@ namespace ProjectFood.Persistence
             //     .ThenInclude(ce => ce.NameCategory);    
             // }
 
-            query = query.OrderBy(e => e.NameCategory).Where(e => e.NameCategory.ToLower().Contains(Name.ToLower()));
+            query = query.OrderBy(e => e.NameCategory).Where(e => e.NameCategory.Equals(Name));
 
             return await query.ToArrayAsync();
         }

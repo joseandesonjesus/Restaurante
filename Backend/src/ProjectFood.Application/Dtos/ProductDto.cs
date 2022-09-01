@@ -16,10 +16,11 @@ namespace ProjectFood.Application.Dtos
         public string NameProduct { get; set; }
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         public decimal PriceProduct { get; set; }
-        public int Discount { get; set; }
         public string DateRegister { get; set; }
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         public bool StatusProduct { get; set; }
+        public int BulkProductId { get; set; }
+        public BulkProductDto BulkProduct { get; set; }
         public int CategoryId { get; set; }
         public CategoryDto Category { get; set; }
 

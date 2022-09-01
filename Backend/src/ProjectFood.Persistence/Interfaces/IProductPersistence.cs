@@ -12,7 +12,6 @@ namespace ProjectFood.Persistence.Interfaces
         Task<Product[]> GetAllProductsByNameAsync(int userId, string nameProduct, bool includeCategory);
         Task<Product[]> GetAllProductsAsync(int userId, bool includeCategory);
         Task<Product> GetProductByIdAsync(int userId, int ProductId, bool includeCategory);
-
-
+        Task<Product[]> GetProductByIdCategoryAsync(int userId, int CategoryId, bool includeCategory);
     }
 }

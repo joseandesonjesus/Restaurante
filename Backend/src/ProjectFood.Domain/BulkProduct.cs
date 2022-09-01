@@ -12,5 +12,6 @@ namespace ProjectFood.Domain
         [Key]
         public int Id { get; set; }
         public string NameBulk { get; set; }
+        public string Abbreviation { get; set; }
     }
 }

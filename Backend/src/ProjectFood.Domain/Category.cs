@@ -11,8 +11,6 @@ namespace ProjectFood.Domain
         [Key]
         public int Id { get; set; }  
         public string NameCategory { get; set; }
-        public string BulkProduct { get; set; }
-        //public int? ProductId { get; set; }
-        //public Product Product { get; set; }
+        public string ColorCategory { get; set; }
     }
 }

@@ -45,6 +45,23 @@ namespace ProjectFood.Application
             }
         }
 
+        public async Task<InTableDto> GetTableByIdAsync(int id)
+        {
+            try
+            {
+                var obj = await _tablePersistence.GetTableByIdAsync(id);
+                if (obj == null) return null;
+
+                var objRet = _mapper.Map<InTableDto>(obj);
+
+                return objRet;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error: " + ex.Message);
+            }
+        }
+
         public async Task<InTableDto> AddTables(InTableDto model)
         {
             try
@@ -63,6 +80,31 @@ namespace ProjectFood.Application
             catch (Exception ex)
             {
 
+                throw new Exception("Error: " + ex.Message);
+            }
+        }
+
+        public async Task<InTableDto> UpdateTable(InTableDto model)
+        {
+            try
+            {
+                var obj = await _tablePersistence.GetTableByIdAsync(model.Id);
+                if (obj == null) return null;
+
+                //model.Id = obj.Id;
+
+                _mapper.Map(model, obj);
+
+                _persistence.Update<InTable>(obj);
+                if (await _persistence.SaveChangeAsync())
+                {
+                    var ret = await _tablePersistence.GetTableByIdAsync(obj.Id);
+                    return _mapper.Map<InTableDto>(ret);
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
                 throw new Exception("Error: " + ex.Message);
             }
         }

@@ -9,8 +9,6 @@ namespace ProjectFood.Application.Dtos
     {
         public int Id { get; set; }  
         public string NameCategory { get; set; }
-        public string BulkProduct { get; set; }
-        //public int? ProductId { get; set; }
-        // public ProductDto Product { get; set; }
+        public string ColorCategory { get; set; }
     }
 }

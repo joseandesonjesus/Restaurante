@@ -9,7 +9,7 @@ using ProjectFood.Persistence.Contexts;
 namespace ProjectFood.Persistence.Migrations
 {
     [DbContext(typeof(ProjectFoodContext))]
-    [Migration("20220402070619_CreateDataBase")]
+    [Migration("20220408025128_CreateDataBase")]
     partial class CreateDataBase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -188,6 +188,9 @@ namespace ProjectFood.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("Abbreviation")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("NameBulk")
                         .HasColumnType("TEXT");
 
@@ -202,7 +205,7 @@ namespace ProjectFood.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("BulkProduct")
+                    b.Property<string>("ColorCategory")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("NameCategory")
@@ -386,10 +389,46 @@ namespace ProjectFood.Persistence.Migrations
                     b.ToTable("Tables");
                 });
 
+            modelBuilder.Entity("ProjectFood.Domain.OrdersTable", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Amount")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Closed")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("InTableId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Obs")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Opened")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("InTableId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("OrdersTables");
+                });
+
             modelBuilder.Entity("ProjectFood.Domain.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("BulkProductId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("CategoryId")
@@ -397,9 +436,6 @@ namespace ProjectFood.Persistence.Migrations
 
                     b.Property<string>("DateRegister")
                         .HasColumnType("TEXT");
-
-                    b.Property<int>("Discount")
-                        .HasColumnType("INTEGER");
 
                     b.Property<string>("NameProduct")
                         .HasColumnType("TEXT");
@@ -414,6 +450,8 @@ namespace ProjectFood.Persistence.Migrations
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("BulkProductId");
 
                     b.HasIndex("CategoryId");
 
@@ -506,8 +544,33 @@ namespace ProjectFood.Persistence.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("ProjectFood.Domain.OrdersTable", b =>
+                {
+                    b.HasOne("ProjectFood.Domain.InTable", "InTable")
+                        .WithMany()
+                        .HasForeignKey("InTableId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ProjectFood.Domain.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("InTable");
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("ProjectFood.Domain.Product", b =>
                 {
+                    b.HasOne("ProjectFood.Domain.BulkProduct", "BulkProduct")
+                        .WithMany()
+                        .HasForeignKey("BulkProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("ProjectFood.Domain.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryId")
@@ -519,6 +582,8 @@ namespace ProjectFood.Persistence.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("BulkProduct");
 
                     b.Navigation("Category");
 

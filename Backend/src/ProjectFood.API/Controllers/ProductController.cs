@@ -21,15 +21,18 @@ namespace ProjectFood.API.Controllers
     {
         private readonly IProductService _productService;
         private readonly ICategoryService _categoryService;
+        private readonly IBulkProductService _bulkProductService;
         private readonly IMapper _mapper;
         private readonly IAccountService _accountService;
 
         public ProductController(IProductService productService,
             ICategoryService categoryService,
+            IBulkProductService bulkProductService,
             IMapper mapper,
         IAccountService accountService ){
             _productService = productService;
             _categoryService = categoryService;
+            _bulkProductService = bulkProductService;
             _mapper = mapper;
             _accountService = accountService;
         }
@@ -43,8 +46,6 @@ namespace ProjectFood.API.Controllers
             try
             {
                 var products = await _productService.GetAllProductsAsync(User.GetUserId(),true);
-                //GetAllProductsAsync(User,true);
-                // var products = await _productService.GetAllProductsAsync(User.GetUserId(),true);
                 
                 if(products == null) return NoContent();
 
@@ -52,17 +53,21 @@ namespace ProjectFood.API.Controllers
                 
                 foreach (var productRet in products)
                 {
+                    var bulks = await _bulkProductService.GetBulkByIdAsync(productRet.BulkProductId);
                     var categories = await _categoryService.GetCategoryByIdAsync(productRet.CategoryId);
                     Console.WriteLine("productRet => " + productRet);
+
                     productsReturn.Add(new ProductDto(){
                         Id = productRet.Id,
                         Image = productRet.Image,
                         NameProduct = productRet.NameProduct,
                         PriceProduct = productRet.PriceProduct,
-                        Discount = productRet.Discount,
                         DateRegister = productRet.DateRegister,
                         StatusProduct = productRet.StatusProduct,
-                        Category = categories
+                        CategoryId = productRet.CategoryId,
+                        Category = categories,
+                        BulkProductId = productRet.BulkProductId,
+                        BulkProduct = bulks
                     });
                 }
 
@@ -77,7 +82,7 @@ namespace ProjectFood.API.Controllers
             }
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("ById/{id}")]
         public async Task<IActionResult> Get(int id)
         {
             try
@@ -93,12 +98,28 @@ namespace ProjectFood.API.Controllers
             }
         }
 
-        [HttpGet("title/{title}")]
-        public async Task<IActionResult> Get(string nameProduct)
+        [HttpGet("ByName/{name}")]
+        public async Task<IActionResult> Get(string name)
         {
             try
             {
-                var product = await _productService.GetAllProductsByNameAsync(User.GetUserId(), nameProduct, true);
+                var product = await _productService.GetAllProductsByNameAsync(User.GetUserId(), name, true);
+                if (product == null) return NoContent();
+                return Ok(product);
+            }
+            catch (Exception ex)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError,
+                $"Erro ao buscasr exento, erro: {ex.Message}");
+            }
+        }
+
+        [HttpGet("ByIdCategory/{idCategory}")]
+        public async Task<IActionResult> GetByCategory(int idCategory)
+        {
+            try
+            {
+                var product = await _productService.GetProductByIdCategoryAsync(User.GetUserId(), idCategory, true);
                 if (product == null) return NoContent();
                 return Ok(product);
             }

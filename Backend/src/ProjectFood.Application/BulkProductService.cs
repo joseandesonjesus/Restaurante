@@ -45,6 +45,23 @@ namespace ProjectFood.Application
             }
         }
 
+        public async Task<BulkProductDto> GetBulkByIdAsync(int id)
+        {
+            try
+            {
+                var bulk = await _bulkProductPersistence.GetBulkByIdAsync(id);
+                if (bulk == null) return null;
+
+                var bulkRet = _mapper.Map<BulkProductDto>(bulk);
+
+                return bulkRet;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error: " + ex.Message);
+            }
+        }
+
         public async Task<BulkProductDto> AddBulks(BulkProductDto model)
         {
             try

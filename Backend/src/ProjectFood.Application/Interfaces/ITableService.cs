@@ -10,6 +10,8 @@ namespace ProjectFood.Application.Interfaces
     public interface ITableService
     {
         Task<InTableDto> AddTables(InTableDto model);
+        Task<InTableDto> UpdateTable(InTableDto model);
         Task<InTableDto[]> GetAllTablesAsync();
+        Task<InTableDto> GetTableByIdAsync(int id);
     }
 }

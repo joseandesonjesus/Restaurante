@@ -159,5 +159,22 @@ namespace ProjectFood.Application
                 throw new Exception("Error: " + ex.Message);
             }
         }
+
+        public async Task<ProductDto[]> GetProductByIdCategoryAsync(int userId, int CategoryId, bool includeCategory = false)
+        {
+            try
+            {
+                var product = await _productPersistence.GetProductByIdCategoryAsync(userId, CategoryId, includeCategory);
+                if (product == null) return null;
+
+                var productRet = _mapper.Map<ProductDto[]>(product);
+
+                return productRet;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error: " + ex.Message);
+            }
+        }
     }
 }

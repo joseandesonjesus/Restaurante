@@ -23,6 +23,7 @@ namespace ProjectFood.Persistence.Contexts
         //public DbSet<ProductCategory> ProductCategory { get; set; }
         public DbSet<InTable> Tables { get; set; }
         public DbSet<BulkProduct> Bulks { get; set; }
+        public DbSet<OrdersTable> OrdersTables { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -110,6 +111,11 @@ namespace ProjectFood.Persistence.Contexts
             });
 
             modelBuilder.Entity<BulkProduct>(entity =>
+            {
+                entity.HasKey(r => r.Id);
+            });
+
+            modelBuilder.Entity<OrdersTable>(entity =>
             {
                 entity.HasKey(r => r.Id);
             });

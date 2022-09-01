@@ -2,6 +2,7 @@
 using ProjectFood.Application.Dtos;
 using ProjectFood.Application.Interfaces;
 using ProjectFood.Domain;
+using ProjectFood.Persistence.Contexts;
 using ProjectFood.Persistence.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -52,6 +53,23 @@ namespace ProjectFood.Application
                 if (category == null) return null;
 
                 var categoryRet = _mapper.Map<CategoryDto>(category);
+
+                return categoryRet;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error: " + ex.Message);
+            }
+        }
+
+        public async Task<CategoryDto[]> GetAllCategoriesByNameAsync(string nameCategory)
+        {
+            try
+            {
+                var category = await _categoryPersistence.GetAllCategoriesByNameAsync(nameCategory);
+                if (category == null) return null;
+
+                var categoryRet = _mapper.Map<CategoryDto[]>(category);
 
                 return categoryRet;
             }

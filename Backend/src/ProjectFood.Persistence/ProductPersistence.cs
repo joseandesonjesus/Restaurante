@@ -21,16 +21,14 @@ namespace ProjectFood.Persistence
 
         public async Task<Product[]> GetAllProductsAsync(int userId, bool includeCategory = false)
         {
-            IQueryable<Product> query = _context.Products
-                                                .Include(e => e.Image);
-                                                // .Include(e => e.Category);
+            IQueryable<Product> query = _context.Products.Include(e => e.Image);
 
             if (includeCategory){
-                query = query.Include(e => e.Category)
-                    //.ThenInclude(ce => ce.NameCategory)
-            ;
+                query = query.Include(e => e.Category);
             }
-            
+
+            query = query.Include(e => e.BulkProduct);
+
             query = query.OrderBy(e => e.Id);
 
             return await query.ToArrayAsync();
@@ -46,7 +44,9 @@ namespace ProjectFood.Persistence
                 // .ThenInclude(ce => ce.NameCategory);  
                 ;  
             }
-            
+
+            query = query.Include(e => e.BulkProduct);
+
             query = query.OrderBy(e => e.Id).Where(e => e.NameProduct.ToLower().Contains(nameProduct.ToLower()));
 
             return await query.ToArrayAsync();
@@ -62,12 +62,28 @@ namespace ProjectFood.Persistence
                 // .ThenInclude(ce => ce.NameCategory)
                 ;  
             }
-            
+
+            query = query.Include(e => e.BulkProduct);
+
             query = query.OrderBy(e => e.Id).Where(e => e.Id == ProductId);
 
             return await query.FirstOrDefaultAsync();
         }
 
+        public async Task<Product[]> GetProductByIdCategoryAsync(int userId, int CategoryId, bool includeCategory = false)
+        {
+            IQueryable<Product> query = _context.Products.Include(e => e.Image);
 
+            if (includeCategory)
+            {
+                query = query.Include(e => e.Category);
+            }
+
+            query = query.Include(e => e.BulkProduct);
+
+            query = query.OrderBy(e => e.Id).Where(e => e.CategoryId == CategoryId);
+
+            return await query.ToArrayAsync();
+        }
     }
 }

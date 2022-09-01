@@ -87,6 +87,7 @@ namespace ProjectFood.API
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<ITableService, TableService>();
             services.AddScoped<IBulkProductService, BulkProductService>();
+            services.AddScoped<IOrdersTableService, OrdersTableService>();
             services.AddScoped<ITokenService, TokenService>();
 
             services.AddScoped<IPersistence, PersistenceGeral>();
@@ -94,6 +95,7 @@ namespace ProjectFood.API
             services.AddScoped<ICategoryPersistence, CategoryPersistence>();
             services.AddScoped<ITablePersistence, TablePersistence>();
             services.AddScoped<IBulkProductPersistence, BulkProductPersistence>();
+            services.AddScoped<IOrdersTablePersistence, OrdersTablePersistence>();
             services.AddScoped<IUserPersist, UserPersist>();
 
 
